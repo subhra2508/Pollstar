@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+  <div class="row">
+ <div class="col"> 
+    <h3 class="font-weight-bold lead">{{question}}</h3>
+    {% for choice in choices%}
+      <div class="card-body">
+       <input 
+       type="radio" 
+       id="choice{{ forloop.counter }}" 
+       name="choice" 
+       value="{{choice.id}}">
+       <label class="lead" for="choice{{ forloop.counter }}">{{choice}}</label>
+      </div>
+     {% endfor %} 
+     <br>
+     <input class="m-3 btn btn-sm btn-danger" type="submit" name="submit">
+     <a class="btn btn-sm  btn-outline-info m-auto" href="{% url 'home'%}">Back to Polls</a>
+   </div>
+</div>
+</form>
+ 
+{% endblock content %} 

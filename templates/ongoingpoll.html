@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block content %}
+<h3 class="text-center text-secondary mb-4">POLLS CURRENTLY GOING ON </h3>
+{% for qs in question%}
+<div class="card">
+ <div class="card-body">
+     <p class="lead">
+        {{qs.id}}.
+        {{qs}}
+     </p>
+    <br><br>
+     <a class="btn btn-sm btn-warning" href="{% url 'vote' qs.id %}">Vote Now</a>
+     <a class="btn btn-sm  btn-outline-info " href="{% url 'vote_statistic' qs.id %}">Result</a>
+</div>
+</div>
+ {% endfor %} 
+
+{% endblock %}
